@@ -3,6 +3,11 @@
 $results = '';  
 foreach($cards as $card){
 
+    // uma ideia é pegar essa rotina aqui e ao inves de jogar o resultado da API em tela
+    // cria uma rotina que de tempos em tempos consulta a API e ja armazena no banco
+    // desse modo se acontecer de o serviço ficar indisponível não afeta a tua aplicação
+    
+    // outra coisa, usa try catch em todo lugar que tem código php rodando, pois assim se der merda tu consegue rastrear o erro
 
     $name = preg_replace('/\s+/', '', $card->name);
     $endPoint = 'https://api.scryfall.com/cards/named?exact='.  strtolower($name);
