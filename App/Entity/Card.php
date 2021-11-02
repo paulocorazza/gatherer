@@ -10,6 +10,8 @@ class Card
     public $cardId;
     public $cardName;
     public $cardQuantity;
+    public $cardRarity;
+    public $cardType;
 
     public function createCard()
     {
@@ -17,6 +19,8 @@ class Card
         $this->cardId = $db->insert([
             'name' => $this->cardName,
             'quantity' => $this->cardQuantity,
+            'rarity' => $this->cardRarity,
+            'type'=> $this->cardType
         ]);
 
         return true;
@@ -24,21 +28,28 @@ class Card
 
     public function updateCard()
     {
-        return (new Database('card'))->update('id = '.$this->cardId,[
-            'name' => $this->cardName,
-            'quantity' => $this->cardQuantity,
+        return (new Database('card'))->update('id = '.$this->id,[
+                'quantity' => $this->cardQuantity,
+                'rarity' => $this->cardRarity,
+                'type'=> $this->cardType
         ]);
     }
 
     public function deleteCard()
     {
-        return (new Database('card'))->delete('id'.$this->cardId);
+        return (new Database('card'))->delete('id ='.$this->id);
     }
 
     public static  function getCards($where = null, $order = null, $limit = null)
     {
         return (new Database('card'))->select($where,$order,$limit)
                                       ->fetchAll(PDO::FETCH_CLASS,self::class);
+    }
+
+    public static function getCard($cardId)
+    {
+        return (new Database('card'))->select('id ='. $cardId)
+                                      ->fetchObject(self::class);
     }
 }
 

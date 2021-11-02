@@ -10,7 +10,7 @@ class Database
     const HOST = 'localhost:3306';
     const NAME = 'gatherer';
     const USER = 'root';
-    const PASS = 'password';
+    const PASSWORD = 'password';
 
     private $table;
     private $connection;
@@ -25,7 +25,7 @@ class Database
     private function setConnection()
     {
          try{
-            $this->connection = new PDO('mysql:host='.self::HOST.';dbname='.self::NAME,self::USER,self::PASS);
+            $this->connection = new PDO('mysql:host='.self::HOST.';dbname='.self::NAME,self::USER,self::PASSWORD);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
          }
          catch(PDOException $e){

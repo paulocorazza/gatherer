@@ -14,22 +14,23 @@ foreach($cards as $card){
     $data = json_decode($response, true);
       
         $results .= '<tr>
-        <td>'.$card->id.'</td>
-        <td>'.$card->name.'</td>     
-        <td>
-            <img src="'.$data["image_uris"]["small"].'">
+        <td class="text-center">'.$card->id.'</td>
+        <td class="text-center">'.$card->name.'</td>     
+        <td class="text-center">
+            <img  src="'.$data["image_uris"]["small"].'">
         </td>  
-        <td>'.$card->quantity. '</td>
-        <td>'.$data["prices"]["usd"].'</td>
-        <td>
-          <a href="editar.php?id='.$card->id.'">
-            <button type="button" class="btn btn-warning">Update</button>
+        <td class="text-center">'.$card->quantity. '</td>
+        <td class="text-center">'.$data["prices"]["usd"].'</td>
+        <td class="text-center">'.$card->rarity .'</td>
+        <td class="text-center">
+          <a href="edit-card.php?id='.$card->id.'">
+            <button type="button" class="btn btn-warning btn-sm">Edit</button>
           </a>
-          <a href="excluir.php?id='.$card->id.'">
-          <button type="button" class="btn btn-info">View More Details</button>
+          <a href="view-card.php?id='.$card->id.'">
+          <button type="button" class="btn btn-info btn-sm">View More Details</button>
          </a>
-          <a href="excluir.php?id='.$card->id.'">
-            <button type="button" class="btn btn-danger">Delete</button>
+          <a href="delete-card.php?id='.$card->id.'">
+            <button type="button" class="btn btn-danger btn-sm">Delete</button>
           </a
         </td>
       </tr>';   
@@ -40,7 +41,7 @@ foreach($cards as $card){
 
 <body>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
 
@@ -48,15 +49,16 @@ foreach($cards as $card){
                     <a href="add-card.php" class="text-white">Add card</a>
                 </button>
 
-                <table class="table bg-light mt-3 table-striped">
+                <table class="table bg-light mt-3 table-striped table-borderless table-hover table-sm">
                     <thead class="bg-primary text-light">
                         <tr>
-                            <th scope="col"><i class="fas fa-id-badge"></i> ID</th>
-                            <th scope="col"><i class="fas fa-file-signature"></i> Name</th>
-                            <th scope="col"><i class="fas fa-image"></i> Photo   </th>
-                            <th scope="col"><i class="fas fa-sort-numeric-up"></i> Quantity</th>
-                            <th scope="col"><i class="fas fa-money-bill"></i> Price in US$</th>
-                            <th scope="col"><i class="fas fa-exclamation"></i> Actions</th>
+                            <th scope="col" class="text-center text-dark"><i class="fas fa-id-badge"></i> ID</th>
+                            <th scope="col" class="text-center text-dark"><i class="fas fa-file-signature"></i> Name</th>
+                            <th scope="col" class="text-center text-dark"><i class="fas fa-image"></i> Photo   </th>
+                            <th scope="col" class="text-center text-dark"><i class="fas fa-sort-numeric-up"></i> Amount</th>
+                            <th scope="col" class="text-center text-dark"><i class="fas fa-money-bill"></i> Price in US$</th>
+                            <th scope="col" class="text-center text-dark"><i class="fas fa-shield-alt"></i>Rarity</th>
+                            <th scope="col" class="text-center text-dark"><i class="fas fa-exclamation"></i> Actions</th>
                         </tr>
                     </thead>
                     <tbody>
