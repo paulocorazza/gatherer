@@ -45,20 +45,56 @@ foreach($cards as $card){
         <div class="row">
             <div class="col-md-12">
 
-                <button type="button" class="btn btn-success btn-lg">
-                    <a href="add-card.php" class="text-white">Add card</a>
-                </button>
+                <section>
+                    <a href="add-card.php" class="btn btn-success text-white">Add card</a>
+                </section>
+
+                <section>
+
+                    <div class="row">
+                        <form method="GET" style="display:contents">
+                            <div class="col-md-6 my-4">
+
+                                <label for="sort">Search for a card</label>
+                                <input type="text" name="search" class="form-control" value="<?= $search ?>">
+                                <p></p>
+                                <button type="submit" class="btn btn-success">Search</button>
+
+                            </div>
+                            <div class="col-md-6 my-4">
+                                <label for="sort">Sort by a type</label>
+                                <select class="form-control" name="type">
+                                    <option value="" selected disabled>Select a type</option>
+                                    <option value="land">Land</option>
+                                    <option value="instant">Instant</option>
+                                    <option value="sorcery">Sorcery</option>
+                                    <option value="creature">Creature</option>
+                                    <option value="artifact">Artifact</option>
+                                    <option value="planeswalker">Planeswalker</option>
+                                    <option value="enchantment">Enchantment</option>
+                                </select>
+                                <p></p>
+                                <button type="submit" class="btn btn-success">Sort</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </section>
 
                 <table class="table bg-light mt-3 table-striped table-borderless table-hover table-sm">
                     <thead class="bg-primary text-light">
                         <tr>
                             <th scope="col" class="text-center text-dark"><i class="fas fa-id-badge"></i> ID</th>
-                            <th scope="col" class="text-center text-dark"><i class="fas fa-file-signature"></i> Name</th>
-                            <th scope="col" class="text-center text-dark"><i class="fas fa-image"></i> Photo   </th>
-                            <th scope="col" class="text-center text-dark"><i class="fas fa-sort-numeric-up"></i> Amount</th>
-                            <th scope="col" class="text-center text-dark"><i class="fas fa-money-bill"></i> Price in US$</th>
+                            <th scope="col" class="text-center text-dark"><i class="fas fa-file-signature"></i> Name
+                            </th>
+                            <th scope="col" class="text-center text-dark"><i class="fas fa-image"></i> Photo </th>
+                            <th scope="col" class="text-center text-dark"><i class="fas fa-sort-numeric-up"></i> Amount
+                            </th>
+                            <th scope="col" class="text-center text-dark"><i class="fas fa-money-bill"></i> Price in US$
+                            </th>
                             <th scope="col" class="text-center text-dark"><i class="fas fa-shield-alt"></i>Rarity</th>
-                            <th scope="col" class="text-center text-dark"><i class="fas fa-exclamation"></i> Actions</th>
+                            <th scope="col" class="text-center text-dark"><i class="fas fa-exclamation"></i> Actions
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,5 +104,3 @@ foreach($cards as $card){
             </div>
         </div>
     </div>
-
-
