@@ -7,6 +7,10 @@ use \PDO;
 
 class Card
 {
+    /*
+    olhando essa classe primeiramente define um atributo chamado Conneection que recebe a instancia da conexão e usa somente ela
+    lembrando o atributo que recebe a instancia da conexão tem que ser privado
+    */
     public $cardId;
     public $cardName;
     public $cardQuantity;
