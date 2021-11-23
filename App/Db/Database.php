@@ -64,14 +64,15 @@ class Database
     }
 
     //metodo responsavel por executar a consulta no banco
-    public function select($where = null, $order = null, $limit = null, $fields = '*')
+    public function select($where = null, $order = null, $limit = null, $fields = '*', $offset = null)
     {
         //DADOS DA QUERY
         $where = strlen($where) ? 'WHERE '.$where : '';
         $order = strlen($order) ? 'ORDER BY '.$order : '';
         $limit = strlen($limit) ? 'LIMIT '.$limit : '';
+        $offset = strlen($offset) ? 'OFFSET' . $offset : '';
     
-        $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
+        $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit.''.$offset;
     
         return $this->execute($query);
     }

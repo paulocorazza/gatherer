@@ -1,5 +1,6 @@
 <?php
 
+
 $results = '';  
 foreach($cards as $card){
 
@@ -33,7 +34,14 @@ foreach($cards as $card){
             <button type="button" class="btn btn-danger btn-sm">Delete</button>
           </a
         </td>
-      </tr>';   
+      </tr>';  
+
+      $results = strlen($results) ? $results : '<tr>
+      <td colspan="6" class="text-center">
+            None Cards were found
+      </td>
+   </tr>';
+
 
 }
 
@@ -78,29 +86,36 @@ foreach($cards as $card){
                             </div>
                         </form>
                     </div>
-
+                    <table class="table bg-light mt-3 table-striped table-borderless table-hover table-sm">
+                        <thead class="bg-primary text-light">
+                            <tr>
+                                <th scope="col" class="text-center text-dark"><i class="fas fa-id-badge"></i> ID</th>
+                                <th scope="col" class="text-center text-dark"><i class="fas fa-file-signature"></i> Name
+                                </th>
+                                <th scope="col" class="text-center text-dark"><i class="fas fa-image"></i> Photo </th>
+                                <th scope="col" class="text-center text-dark"><i class="fas fa-sort-numeric-up"></i>
+                                    Amount
+                                </th>
+                                <th scope="col" class="text-center text-dark"><i class="fas fa-money-bill"></i> Price in
+                                    US$
+                                </th>
+                                <th scope="col" class="text-center text-dark"><i class="fas fa-shield-alt"></i>Rarity
+                                </th>
+                                <th scope="col" class="text-center text-dark"><i class="fas fa-exclamation"></i> Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?= $results ?>
+                        </tbody>
+                    </table>
+                    <p></p>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                        <button class="bnt btn-success">Load More</button>
+                        </div>
+                    </div>
                 </section>
-
-                <table class="table bg-light mt-3 table-striped table-borderless table-hover table-sm">
-                    <thead class="bg-primary text-light">
-                        <tr>
-                            <th scope="col" class="text-center text-dark"><i class="fas fa-id-badge"></i> ID</th>
-                            <th scope="col" class="text-center text-dark"><i class="fas fa-file-signature"></i> Name
-                            </th>
-                            <th scope="col" class="text-center text-dark"><i class="fas fa-image"></i> Photo </th>
-                            <th scope="col" class="text-center text-dark"><i class="fas fa-sort-numeric-up"></i> Amount
-                            </th>
-                            <th scope="col" class="text-center text-dark"><i class="fas fa-money-bill"></i> Price in US$
-                            </th>
-                            <th scope="col" class="text-center text-dark"><i class="fas fa-shield-alt"></i>Rarity</th>
-                            <th scope="col" class="text-center text-dark"><i class="fas fa-exclamation"></i> Actions
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?= $results ?>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>

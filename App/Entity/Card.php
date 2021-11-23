@@ -40,9 +40,9 @@ class Card
         return (new Database('card'))->delete('id ='.$this->id);
     }
 
-    public static  function getCards($where = null, $order = null, $limit = null)
+    public static  function getCards($where = null, $order = null, $limit = 10, $offset = null)
     {
-        return (new Database('card'))->select($where,$order,$limit)
+        return (new Database('card'))->select($where,$order,$limit, $offset)
                                       ->fetchAll(PDO::FETCH_CLASS,self::class);
     }
 
@@ -50,6 +50,13 @@ class Card
     {
         return (new Database('card'))->select('id ='. $cardId)
                                       ->fetchObject(self::class);
+    }
+
+    public static  function getCountCards($where = null)
+    {
+        return (new Database('card'))->select($where, null,null,'COUNT(*) as qtd')
+                                      ->fetchObject()
+                                      ->qtd;
     }
 }
 

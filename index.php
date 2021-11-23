@@ -3,6 +3,7 @@
 require __DIR__.'/vendor/autoload.php';
 
 use App\Entity\Card;
+use App\Db\Pagination;
 
 
 
@@ -13,16 +14,18 @@ use App\Entity\Card;
    ];
    $where = implode(' AND ', $condition);
    $search = '';
+
  } else {
     $search = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING);
     $condition = [
        strlen($search) ? 'type =  "' . $search .'";' : null
     ];
     $where = implode(' WHERE ', $condition);
-    $search = '';
+    $search = '';  
  }
 
-
+$qtdCards = Card::getCountCards($where);
+$objPagination = new Pagination($qtdCards, $_GET['page'] ?? 1,5);
 $cards = Card::getCards($where);
 
 
